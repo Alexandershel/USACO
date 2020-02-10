@@ -73,7 +73,7 @@ public class transform
         Scanner scan = new Scanner(new File("transform.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("transform.out")));
         
-        // declares and read in the side length of the figure
+        // reads in the side length of the figure
         N = Integer.parseInt(scan.nextLine());
                 
         // declare variables
