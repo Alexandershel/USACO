@@ -6,7 +6,7 @@
 
 // NAME             :   Shelby Alexander
 // GROUP            :   AP CS
-// LAST MODIFIED    :   19 December 2019
+// LAST MODIFIED    :   4 December 2019
 // PROBLEM ID       :   USACO Name That Number
 // DESCRIPTION      :   This program finds the
 //                      proper name for a cow.
@@ -14,6 +14,8 @@
 
 import java.io.*;
 import java.util.*;
+import java.lang.*;
+import java.text.*;
 
 public class namenum
 {
@@ -21,23 +23,23 @@ public class namenum
     {
         // opening files for input and output
         Scanner in = new Scanner(new File("namenum.in"));
-        Scanner scan = new Scanner(new File("dict.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("dict.txt"));
         PrintWriter out = new PrintWriter(new File("namenum.out"));
         
         // declare variables
-        long code;
+        int code, nameNum;
         int j = 0;
-        String name, original;
+        final int ASCII = 64, MOD_VAL = 47;
+        String name;
         
         // reads in the serial code
-        code = Long.parseLong(in.next());
+        code = Integer.parseInt(in.next());
         
         // converts the names to numbers
-        while(scan.hasNext())
+        while((name = br.readLine()) != null)
         {
-            // reads in the next name
-            original = scan.nextLine();
-            name = original;
+            // initializes variables
+            nameNum = 1;
             
             // translates letters to numbers
             if(name.contains("A") || name.contains("B") || name.contains("C"))
@@ -88,16 +90,14 @@ public class namenum
                 name = name.replace("X", "9");
                 name = name.replace("Y", "9");
             }
-            if(name.contains("Q") || name.contains("Z"))
-            {
-                name = name.replace("Q", "");
-                name = name.replace("Z", "");
-            }
+            nameNum = Integer.valueOf(name);
             
             // compares the serial code to the number
-            if(Long.parseLong(name) == code)
+            if(nameNum == code)
             {
-                out.println(original);
+                out.println(name);
+            
+                // counter
                 j++;
             }
         }
@@ -105,6 +105,7 @@ public class namenum
         {
             out.println("NONE");
         }
+        
         
         // ensures the program ends properly
         out.close();
