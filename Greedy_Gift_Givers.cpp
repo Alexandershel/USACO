@@ -9,8 +9,8 @@
 // LAST MODIFIED    :   5 February 2019
 // PROBLEM ID       :   USACO Greedy Gift Givers
 // DESCRIPTION      :   This program finds the balances
-//						of bank accounts after a number
-//						of rounds of gift giving.
+//			of bank accounts after a number
+//			of rounds of gift giving.
 // SOURCES/HELP     :   Mr. H, USACO, Ava Apolo, Sawyer
 //                      Barton, Charlie Hinkley
 
@@ -22,8 +22,8 @@ using namespace std;
 
 int main()
 {
-    // opens files for input and output
-    ofstream fout ("gift1.out");
+    	// opens files for input and output
+   	ofstream fout ("gift1.out");
 	ifstream fin ("gift1.in");
     
 	// declares NP
@@ -42,9 +42,9 @@ int main()
 	{
 		account[j] = 0;
 		fin >> name[j];
-    }
+    	}
 	
-    // repeats process of gift giving and receiving
+    	// repeats process of gift giving and receiving
 	for(int j = 0; j < NP; j++)
 	{
 		// inputs giver, number of receivers, and the
@@ -56,17 +56,17 @@ int main()
 		// finds amount of money in the giver's account
 		for(int i = 0; i < NP; i++)
 		{
-           if(name[i] == giver)
-           {
-                account[i] -= moneyGive;
+          		if(name[i] == giver)
+          		{
+               			account[i] -= moneyGive;
                
-                // determines if the giver matches the account
-                if(NG != 0)
-                {
-                    // finds the new giver account balance
-                    account[i] += moneyGive % NG;
-                }
-           }
+                		// determines if the giver matches the account
+                		if(NG != 0)
+                		{
+				    // finds the new giver account balance
+				    account[i] += moneyGive % NG;
+				}
+			 }
 		}
 		
 		// finds amount of money in the receiver's account
@@ -75,17 +75,17 @@ int main()
 			// reads in the receiver
 			fin >> receiver;
 			
-            for(int k = 0; k < NP; k++)
-            {
-                // determines if the receiver matches the account
-                if(name[k] == receiver and NG != 0)
-                {
-                    // finds the new receiver account balance
-                    account[k] += moneyGive / NG;
-                }
-            }
+			for(int k = 0; k < NP; k++)
+		    	{
+				// determines if the receiver matches the account
+				if(name[k] == receiver and NG != 0)
+				{
+			    		// finds the new receiver account balance
+			    		account[k] += moneyGive / NG;
+				}
+		    	}
 		}
-    }
+	}
 	
 	// outputs account balances and associated names
 	for(int j = 0; j < NP; j++)
@@ -93,7 +93,7 @@ int main()
 		fout << name[j] << " " << account[j] << endl;
 	}
 		
-    // exit program
-    return 0;
+    	// exit program
+   	return 0;
 }
 
